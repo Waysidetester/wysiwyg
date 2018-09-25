@@ -93,4 +93,20 @@ const printToDom = (divId, stringToPrint) => {
     document.getElementById(divId).innerHTML += stringToPrint;
 }
 
-printToDom('cardsHere', famous[7].netWorth);
+const famousBuilder = () => {
+    let newstring = ``;
+    for (i = 0; i < famous.length; i++) {
+        newstring += `<div>`;
+        newstring += `  <h3>${famous[i].name}</h3>`;
+        newstring += `  <img src="${famous[i].image}" alt="image of${famous[i].name}"/>`
+        newstring += `  <h4>${famous[i].title}</h4>`;
+        newstring += `  <strong>${famous[i].netWorth}</strong>`;
+        newstring += `  <p>${famous[i].bio}</p>`;
+        newstring += `  <p><strong>Time alive:</strong> ${famous[i].lifespan.birth} - ${famous[i].lifespan.death}</p>`;
+        newstring += `</div>`
+        printToDom('cardsHere', newstring);
+        newstring = ``
+    }
+}
+
+famousBuilder();
