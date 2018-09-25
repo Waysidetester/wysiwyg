@@ -43,11 +43,22 @@ const famous = [
             death: 1878
         }
     },
-    // stopped here. PICK BACK UP HERE
     {
-        title: "Samurai",
-        name: "Tomoe Gozen",
-        bio: "Serving under Minamoto Yoshinaka, Tomoe was one of his finest soldiers, and her skills in battle dwarfed many of those held by even the strongest men in her unit.",
+        title: "Stockbroker",
+        name: "James Fisk",
+        bio: "American stockbroker and corporate executive who has been referred to as one of the \"robber barons\" of the Gilded Age. Though Fisk was admired by the working class of New York and the Erie Railroad, he achieved much ill-fame for his role in Black Friday in 1869, where he and his partner Jay Gould befriended the unsuspecting President Ulysses S. Grant in an attempt to use the President's good name in a scheme to corner the gold market in New York City. Several years later Fisk was murdered by a disgruntled business associate.",
+        netWorth: "N/A",
+        image: "https://upload.wikimedia.org/wikipedia/commons/1/13/Jubilee-jim-fisk.jpg",
+        lifespan: {
+            birth: 1835,
+            death: 1872 
+        }
+    },
+    {
+        title: "Stock market speculation and manipulation",
+        name: "Daniel Drew",
+        bio: "American businessman, steamship and railroad developer, and financier. Summarizing his life, Henry Clews wrote: \"Of all the great operators of Wall Street ... Daniel Drew furnishes the most remarkable instance of immense and long-continued success, followed by utter failure and hopeless bankruptcy\".",
+        netWorth: "$200 million (in 2017 dollars; inflation-adjusted)",
         image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Tomoe-Gozen.jpg",
         lifespan: {
             birth: 1747,
@@ -55,33 +66,31 @@ const famous = [
         }
     },
     {
-        title: "Samurai",
-        name: "Tomoe Gozen",
-        bio: "Serving under Minamoto Yoshinaka, Tomoe was one of his finest soldiers, and her skills in battle dwarfed many of those held by even the strongest men in her unit.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Tomoe-Gozen.jpg",
+        title: "Financier",
+        name: "Jay Cooke",
+        bio: "American financier who helped finance the Union war effort during the American Civil War and the postwar development of railroads in the northwestern United States. He is generally acknowledged as the first major investment banker in the United States and creator of the first wire house firm.",
+        netWorth: "590 million (in 2017 dollars; inflation-adjusted)",
+        image: "https://upload.wikimedia.org/wikipedia/commons/1/19/JayCooke-BW.JPG",
         lifespan: {
             birth: 1747,
             death: 1797
         }
     },
     {
-        title: "Samurai",
-        name: "Tomoe Gozen",
-        bio: "Serving under Minamoto Yoshinaka, Tomoe was one of his finest soldiers, and her skills in battle dwarfed many of those held by even the strongest men in her unit.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Tomoe-Gozen.jpg",
+        title: "Carnegie Steel Company",
+        name: "Andrew Carnegie",
+        bio: "Carnegie led the expansion of the American steel industry in the late 19th century and is often identified as one of the richest people (and richest Americans). He became a leading philanthropist in the United States and in the British Empire. During the last 18 years of his life, he gave away about $350 million to charities, foundations, and universities—almost 90 percent of his fortune. His 1889 article proclaiming \"The Gospel of Wealth\" called on the rich to use their wealth to improve society, and stimulated a wave of philanthropy.",
+        netWorth: "372 billion (in 2016 dollars; inflation-adjusted)",
+        image: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Andrew_Carnegie%2C_three-quarter_length_portrait%2C_seated%2C_facing_slightly_left%2C_1913.jpg",
         lifespan: {
-            birth: 1747,
-            death: 1797
-        }
-    },
-    {
-        title: "Samurai",
-        name: "Tomoe Gozen",
-        bio: "Serving under Minamoto Yoshinaka, Tomoe was one of his finest soldiers, and her skills in battle dwarfed many of those held by even the strongest men in her unit.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Tomoe-Gozen.jpg",
-        lifespan: {
-            birth: 1747,
-            death: 1797
+            birth: 1835,
+            death: 1919 
         }
     }
 ];
+
+const printToDom = (divId, stringToPrint) => {
+    document.getElementById(divId).innerHTML += stringToPrint;
+}
+
+printToDom('cardsHere', famous[7].netWorth);
