@@ -96,17 +96,34 @@ const printToDom = (divId, stringToPrint) => {
 const famousBuilder = () => {
     let newstring = ``;
     for (i = 0; i < famous.length; i++) {
-        newstring += `<div>`;
-        newstring += `  <h3>${famous[i].name}</h3>`;
+        newstring += `<div class="card">`;
+        newstring += `  <header>${famous[i].name} ${famous[i].title}</header>`;
         newstring += `  <img src="${famous[i].image}" alt="image of${famous[i].name}"/>`
-        newstring += `  <h4>${famous[i].title}</h4>`;
         newstring += `  <strong>${famous[i].netWorth}</strong>`;
         newstring += `  <p>${famous[i].bio}</p>`;
-        newstring += `  <p><strong>Time alive:</strong> ${famous[i].lifespan.birth} - ${famous[i].lifespan.death}</p>`;
+        newstring += `  <footer><strong>Time alive:</strong> ${famous[i].lifespan.birth} - ${famous[i].lifespan.death}</footer>`;
         newstring += `</div>`
         printToDom('cardsHere', newstring);
         newstring = ``
     }
+};
+const cardClicker = document.getElementsByClassName('card');
+const eventBubbler = () => {
+    for (i = 0; i < cardClicker.length; i++) {
+        cardClicker[i].addEventListener('click', (e) => {
+            classRemover(e.currentTarget.parentNode.children);
+            console.log(e.currentTarget);
+            e.currentTarget.classList.toggle('bordered');
+            document.getElementById('formEntry').focus();
+        })
+    }
 }
 
+const classRemover = (allCards) => {
+    for(i = 0; i < allCards.length; i++) {
+        allCards[i].classList.remove('bordered');
+    }
+};
+
 famousBuilder();
+eventBubbler();
