@@ -107,17 +107,23 @@ const famousBuilder = () => {
         newstring = ``
     }
 };
-
+const cardClicker = document.getElementsByClassName('card');
 const eventBubbler = () => {
-    const cardClicker = document.getElementsByClassName('card');
     for (i = 0; i < cardClicker.length; i++) {
-        cardClicker[i].removeClass('bordered')
         cardClicker[i].addEventListener('click', (e) => {
+            classRemover(e.currentTarget.parentNode.children);
+            console.log(e.currentTarget);
             e.currentTarget.classList.toggle('bordered');
             document.getElementById('formEntry').focus();
         })
     }
 }
+
+const classRemover = (allCards) => {
+    for(i = 0; i < allCards.length; i++) {
+        allCards[i].classList.remove('bordered');
+    }
+};
 
 famousBuilder();
 eventBubbler();
