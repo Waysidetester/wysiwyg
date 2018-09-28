@@ -10,11 +10,19 @@ img {
 #cardsHere {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .card {
-    width: 40%;
+    width: 33%;
+}
+
+.card:nth-child(even) {
+    background-color: lightyellow;
+}
+
+.card:nth-child(odd) {
+    background-color: lightblue;
 }
 
 #submitForm {
