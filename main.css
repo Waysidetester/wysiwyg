@@ -6,3 +6,17 @@ img {
 .bordered {
     border: 1px dashed black;
 }
+
+#cardsHere {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.card {
+    width: 40%;
+}
+
+#submitForm {
+    opacity: 0;
+}
