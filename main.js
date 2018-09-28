@@ -105,6 +105,28 @@ const printToDom = (divId, stringToPrint) => {
     document.getElementById(divId).innerHTML += stringToPrint;
 }
 
+const eventBubbler = (cardId) => {
+    document.getElementById(cardId).addEventListener('click', (e) => {
+        let target = e.currentTarget
+        console.log(target);
+        let oldClass = document.getElementsByClassName('bordered');
+        if (oldClass.length > 0) {
+            oldClass[0].classList.remove('bordered');
+        }
+        e.currentTarget.classList.add('bordered');
+        inputBox.focus();
+        inputBox.addEventListener('keyup', (e) => {
+            if(e.keyCode === 13) {
+                inputBox.blur();
+                inputBox.value = '';
+            } else {
+                let bioTarget = document.getElementsByClassName('bordered');
+                bioTarget[0].childNodes[7].innerHTML = inputBox.value;
+            }
+        });
+    });
+}
+
 const famousBuilder = () => {
     let newstring = ``;
     for (i = 0; i < famous.length; i++) {
@@ -113,7 +135,7 @@ const famousBuilder = () => {
         newstring += `  <header>${famous[i].name} ${famous[i].title}</header>`;
         newstring += `  <img src="${famous[i].image}" alt="image of${famous[i].name}"/>`
         newstring += `  <strong>${famous[i].netWorth}</strong>`;
-        newstring += `  <p class="biography" >${famous[i].bio}</p>`;
+        newstring += `  <p class="biography">${famous[i].bio}</p>`;
         newstring += `  <footer><strong>Time alive:</strong> ${famous[i].lifespan.birth} - ${famous[i].lifespan.death}</footer>`;
         newstring += `</div>`
         printToDom('cardsHere', newstring);
@@ -128,49 +150,6 @@ const famousBuilder = () => {
     eventBubbler(famous[5].idName)
     eventBubbler(famous[6].idName)
     eventBubbler(famous[7].idName)
-    
 };
 
-const classRemover = (allCards) => {
-    for(i = 0; i < allCards.length; i++) {
-        allCards[i].classList.remove('bordered');
-    }
-};
-
-
-const eventBubbler = (cardId) => {
-    document.getElementById(cardId).addEventListener('click', (e) => {
-        let target = e.currentTarget
-        classRemover(target.parentNode.children);
-        console.log(target);
-        e.currentTarget.classList.toggle('bordered');
-        inputBox.focus();
-        inputBox.addEventListener('keyup', (e) => {
-            let bioTarget = document.getElementsByClassName('bordered');
-            bioTarget[0].childNodes[7].innerHTML = inputBox.value;
-            if(e.keyCode === 13) {
-                // const newBio = inputBox.value;
-                // console.log(newBio);
-                inputBox.blur();
-                inputBox.value = '';
-                // bioTarget[0].childNodes[7].innerHTML = newBio;
-            }
-        });
-    });
-}
 famousBuilder();
-
-// const newFunct = (eventTarget) => {
-//     inputBox.addEventListener('keyup', (e) => {
-//         eventTarget.childNodes[7].innerHTML = inputBox.value;
-//         if(e.keyCode === 13) {
-//             const newBio = inputBox.value;
-//             console.log(newBio);
-//             inputBox.blur();
-//             inputBox.value = null;
-//             eventTarget.childNodes[7].innerHTML = newBio;
-//             eventTarget = undefined;
-//         }
-//     });
-// };
-
